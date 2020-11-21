@@ -1,0 +1,19 @@
+<label id="example-radio-group-label">Pick your favorite season</label>
+<div *ngFor="let q of questions">
+  {{q.name}}
+  <mat-radio-group
+    aria-labelledby="example-radio-group-label"
+    class="example-radio-group"
+    [(ngModel)]="q.choiceMade"
+  >
+    <mat-radio-button
+      class="example-radio-button"
+      *ngFor="let choice of q.choices"
+      (change)="answerSelect($event, q)"
+      [value]="choice"
+    >
+      {{choice}}
+    </mat-radio-button>
+  </mat-radio-group>
+  <div>Your favorite season is: {{q.choiceMade}}</div>
+</div>
